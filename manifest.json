@@ -1,0 +1,22 @@
+{
+    "name": "豆小虾",
+    "version": "0.0.1",
+    "description": "豆瓣红心歌曲同步到虾米音乐",
+    "manifest_version": 2,
+    "icons": {
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "web_accessible_resources": ["scripts/zepto.min.js", "scripts/sync.js", 
+        "scripts/async.js", "scripts/pubsub.min.js", "css/bootstrap.min.css"],
+    "permissions": [
+        "http://douban.fm/*",
+        "http://*.xiami.com/*",
+        "webRequest", 
+        "webRequestBlocking",
+        "cookies"
+    ]
+}

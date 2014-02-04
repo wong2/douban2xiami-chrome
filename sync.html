@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sync</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script type="text/javascript" src="scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="scripts/pubsub.min.js"></script>
+    <script type="text/javascript" src="scripts/async.js"></script>
+    <style type="text/css">
+        .hid {
+            display: none;
+        }
+        h1, h2, h4 {
+            text-align: center;
+        }
+        h1 {
+            margin-top: 150px;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        h4 {
+            color: grey;
+        }
+        .container .step button {
+            width: 400px;
+            margin-top: 100px;
+        }
+        .btn-group {
+            width: 300px;
+        }
+        .container .step .btn-group button {
+            width: 150px;
+        }
+        #go-to-xiami {
+            margin-top: 100px;
+        }
+        .manual-selector-option {
+            font-size: 18px;
+        }
+        .manual-selector-option span {
+            color: grey;
+            margin-left: 5px;
+            font-size: 10px;
+        }
+        #manual-selector {
+            margin-top: 40px;
+            width: 600px;
+        }
+        #login-alert-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-warning alert-dismissable hid" id="login-alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true" id="login-alert-close">&times;</button>
+            <p id="login-alert-text">haha</p>
+        </div>
+        <div id="step1" class="step">
+            <h1>我们开始第一次同步吧～</h1>
+            <button type="button" id="start-btn" class="btn btn-primary btn-lg btn-block center-block">开始吧</button>
+        </div>
+        <div id="step2" class="hid step">
+            <h1>查找豆瓣红心歌曲</h1>
+            <h2 id="douban-song-fetch-status">...</h2>
+        </div>
+        <div id="step3" class="hid step">
+            <h1>开始同步</h1>
+            <h2 id="douban-song-fetch-result"></h2>
+            <h4 id="douban-song-east-egg"></h4>
+            <button type="button" id="start-sync-btn" class="btn btn-primary btn-lg btn-block center-block">同步到虾米</button>
+        </div>
+        <div id="step4" class="hid step">
+            <h1>同步中</h1>
+            <h2 id="xiami-matching-song"></h2>
+        </div>
+        <div id="step5" class="hid step">
+            <h1>同步完成</h1>
+            <h2 id="xiami-matching-result"></h2>
+            <h4 id="go-to-xiami" class="hid">
+                <a href="http://www.xiami.com/space/lib-song" target="_blank">去虾米看看结果</a>
+                <a href="https://me.alipay.com/wong2" target="_blank" style="margin-left:5px">请我喝罐啤酒</a>
+            </h4>
+            <div id="missing-process" class="hid">
+                <h4>还有<span id="missing-tip-count">*</span>首歌无法自动匹配，要不要手动匹配一下？</h4>
+                <div class="btn-group center-block">
+                    <button type="button" id="manual-missing" class="btn btn-primary">要</button>
+                    <button type="button" id="no-manual-missing" class="btn btn-danger">不要</button>
+                </div>
+            </div>
+        </div>
+        <div id="step6" class="hid step">
+            <h1>手动匹配</h1>
+            <h2 id="manual-song-title"></h2>
+            <ul id="manual-selector" class="nav nav-pills center-block"></ul>
+            <div class="btn-group center-block">
+                <button type="button" id="manual-pass" class="btn btn-primary">跳过
+                </button>
+                <button type="button" id="manual-pass-all" class="btn btn-danger">全部跳过</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/x-template" id="manual-selector-opt-tmpl">
+        <li>
+            <a href="javascript:void(0)" class="manual-selector-option" data-sid="{sid}">
+                {title}<span>{artist}</span>
+            </a>
+        </li>
+    </script>
+
+    <script type="text/javascript" src="scripts/sync.js"></script>
+</body>
+</html>
